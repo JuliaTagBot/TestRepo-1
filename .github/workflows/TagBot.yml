@@ -10,6 +10,8 @@ jobs:
   TagBot:
     runs-on: ubuntu-latest
     steps:
+      - run: echo AHHHHHH
+        if: github.event_name == 'schedule'
       - run: env
       - run: cat $GITHUB_EVENT_PATH | python -m json.tool
       - uses: JuliaRegistries/TagBot@v1
