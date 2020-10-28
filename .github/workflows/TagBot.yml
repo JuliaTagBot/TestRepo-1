@@ -4,7 +4,7 @@ on:
     types:
       - created
   schedule:
-    - cron: */5 * * * *
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 jobs:
   TagBot:
