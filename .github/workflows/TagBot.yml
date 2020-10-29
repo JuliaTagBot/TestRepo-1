@@ -7,7 +7,7 @@ on:
 jobs:
   TagBot:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || github.sender == 'JuliaTagBot'
+    if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
     steps:
       - run: env
       - run: cat $GITHUB_EVENT_PATH | python -m json.tool
