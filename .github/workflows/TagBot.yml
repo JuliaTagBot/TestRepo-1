@@ -1,15 +1,17 @@
 name: TagBot
 on:
+  push:
   issue_comment:
     types:
       - created
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
 jobs:
   TagBot:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: FOOBAR
     steps:
+      - run: echo $GITHUB_TOKEN
       - run: echo AHHHHHH
         if: github.event_name == 'schedule'
       - run: env
