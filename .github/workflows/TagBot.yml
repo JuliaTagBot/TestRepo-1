@@ -1,6 +1,5 @@
 name: TagBot
 on:
-  push:
   issue_comment:
     types:
       - created
@@ -8,14 +7,7 @@ on:
 jobs:
   TagBot:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: FOOBAR
+    if: github.event_name == 'workflow_dispatch' || github.sender == 'JuliaTagBot'
     steps:
-      - run: echo $GITHUB_TOKEN
-      - run: echo AHHHHHH
-        if: github.event_name == 'schedule'
       - run: env
-      - run: cat $GITHUB_EVENT_PATH | python -m json.tool
-      - uses: JuliaRegistries/TagBot@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - cat $GITHUB_EVENT_PATH | python -m json.tool
