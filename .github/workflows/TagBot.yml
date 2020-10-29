@@ -11,3 +11,4 @@ jobs:
     steps:
       - run: env
       - run: cat $GITHUB_EVENT_PATH | python -m json.tool
+# uses: JuliaRegistries/TagBot@v1
