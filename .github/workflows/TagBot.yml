@@ -10,4 +10,4 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.sender == 'JuliaTagBot'
     steps:
       - run: env
-      - cat $GITHUB_EVENT_PATH | python -m json.tool
+      - run: cat $GITHUB_EVENT_PATH | python -m json.tool
