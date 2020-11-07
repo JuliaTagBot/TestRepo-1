@@ -10,11 +10,4 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
     steps:
       - run: cat $GITHUB_EVENT_PATH | python -m json.tool
-      - run: exit 1
-        continue-on-error: true
-      - run: env
-        if: success()
-#      - uses: JuliaRegistries/TagBot@dev
-#        with:
-#          token: foo
-#          lookback: 3
+      - run: echo "${{ secrets.FOO }}" | base64
