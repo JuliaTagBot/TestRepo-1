@@ -1,13 +1,14 @@
-name: TagBot
+name: Register Package
 on:
-  issue_comment:
-    types:
-      - created
   workflow_dispatch:
+    inputs:
+      version:
+        description: Version to register or component to bump
+        required: true
 jobs:
-  TagBot:
+  register:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
     steps:
-      - run: cat $GITHUB_EVENT_PATH | python -m json.tool
-      - run: echo "${{ secrets.FOO }}" | base64
+      - uses: julia-actions/RegisterAction@cdg/branch
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
